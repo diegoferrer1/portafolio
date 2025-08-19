@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Ferrer - Desarrollador Web</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        // Configuración personalizada de Tailwind para extender la paleta de colores y fuentes
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-primary': '#050a30', // Azul Profundo
+                        'brand-accent': '#1c3f60',  // Azul Medio
+                        'brand-light': '#f1f1f1',   // Gris Claro
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos para la transición suave de las secciones */
+        .section-content {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            display: none;
+        }
+        /* Estilo para el botón de navegación activo */
+        .nav-button.active {
+            background-color: #e5e7eb; /* Un gris claro para destacar */
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-primary antialiased">
+    <!-- Barra de Navegación -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md rounded-b-3xl">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <!-- Logo y Nombre -->
+            <a href="#home" class="flex items-center space-x-2 text-brand-primary text-2xl font-bold" data-section="home">
+                <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3v18M16 3v18M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+                    <path d="M12 7v10"/><path d="M9 10h6"/><path d="M9 14h6"/>
+                </svg>
+                <span>Diego Ferrer</span>
+            </a>
+
+            <!-- Menú de Navegación para Escritorio -->
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="#home" class="nav-button py-2 px-5 rounded-full font-semibold transition-colors duration-300 hover:bg-gray-200" data-section="home">Inicio</a>
+                <a href="#portfolio" class="nav-button py-2 px-5 rounded-full font-semibold transition-colors duration-300 hover:bg-gray-200" data-section="portfolio">Portafolio</a>
+                <a href="#plans" class="nav-button py-2 px-5 rounded-full font-semibold transition-colors duration-300 hover:bg-gray-200" data-section="plans">Planes</a>
+                <a href="#about" class="nav-button py-2 px-5 rounded-full font-semibold transition-colors duration-300 hover:bg-gray-200" data-section="about">Sobre Mí</a>
+            </div>
+            
+            <!-- Botón de Menú Móvil (Hamburguesa) -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-brand-primary focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menú desplegable para móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white rounded-b-3xl shadow-lg">
+            <a href="#home" class="block text-center py-3 px-4 text-lg font-semibold hover:bg-gray-200" data-section="home">Inicio</a>
+            <a href="#portfolio" class="block text-center py-3 px-4 text-lg font-semibold hover:bg-gray-200" data-section="portfolio">Portafolio</a>
+            <a href="#plans" class="block text-center py-3 px-4 text-lg font-semibold hover:bg-gray-200" data-section="plans">Planes</a>
+            <a href="#about" class="block text-center py-3 px-4 text-lg font-semibold hover:bg-gray-200" data-section="about">Sobre Mí</a>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container mx-auto mt-8 p-4">
+        <!-- Sección de Inicio (Home) -->
+        <section id="home" class="section-content">
+            <!-- Hero Section -->
+            <div class="bg-brand-primary text-white py-20 px-6 rounded-3xl shadow-lg mb-12 text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+                    Desarrollo Soluciones Web Creativas y Funcionales.
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+                    Convierto tus ideas en experiencias digitales impactantes y a la medida.
+                </p>
+                <a href="#plans" data-section="plans" class="bg-brand-accent text-white py-3 px-6 rounded-full font-semibold transition-transform hover:scale-105 inline-block">
+                    Ver Mis Planes
+                </a>
+            </div>
+
+            <!-- Portafolio Destacado -->
+            <div class="mb-12">
+                <h2 class="text-4xl font-bold text-center text-brand-primary mb-10">Mis Proyectos Más Recientes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Proyecto 1 -->
+                    <div class="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="logofull.jpg" alt="ChillGuy Burguers" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/050a30/f1f1f1?text=ChillGuy+Burguers';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-brand-primary mb-2">ChillGuy Burguers</h3>
+                            <p class="text-gray-600 text-sm">Página web para una hamburguesería con un estilo moderno y juvenil.</p>
+                            <a href="#portfolio" data-section="portfolio" class="text-brand-accent hover:underline mt-3 inline-block font-semibold">Ver Proyecto</a>
+                        </div>
+                    </div>
+                    <!-- Proyecto 2 -->
+                    <div class="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="logoclub.jpg" alt="El Club Español Cultural" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1c3f60/f1f1f1?text=Club+Español';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-brand-primary mb-2">El Club Español Cultural</h3>
+                            <p class="text-gray-600 text-sm">Sitio web corporativo para un club social con calendario de eventos.</p>
+                             <a href="#portfolio" data-section="portfolio" class="text-brand-accent hover:underline mt-3 inline-block font-semibold">Ver Proyecto</a>
+                        </div>
+                    </div>
+                    <!-- Proyecto 3 -->
+                    <div class="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="laesquina.jpg" alt="La Esquina Gastrobar" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1c3f60/f1f1f1?text=La+Esquina+Gastrobar';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-brand-primary mb-2">La Esquina Gastrobar</h3>
+                            <p class="text-gray-600 text-sm">Diseño dinámico con eventos, promociones y galería de bebidas.</p>
+                            <a href="#portfolio" data-section="portfolio" class="text-brand-accent hover:underline mt-3 inline-block font-semibold">Ver Proyecto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen "Sobre Mí" -->
+            <div class="bg-white p-10 rounded-3xl shadow-lg text-center mb-12">
+                <h2 class="text-4xl font-bold text-brand-primary mb-6">Sobre Mí</h2>
+                <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
+                    Soy un desarrollador web apasionado por crear soluciones digitales que no solo se ven bien, sino que también resuelven problemas reales y ayudan a mis clientes a alcanzar sus objetivos.
+                </p>
+                <a href="#about" data-section="about" class="text-brand-accent hover:underline mt-6 inline-block font-semibold">Conoce más sobre mí</a>
+            </div>
+
+            <!-- Llamada a la Acción Final -->
+            <div class="bg-brand-accent text-white py-16 px-6 rounded-3xl shadow-lg text-center">
+                <h2 class="text-4xl font-bold mb-4">¿Listo para llevar tu proyecto al siguiente nivel?</h2>
+                <p class="text-xl mb-8 opacity-90">Explora mis planes o contáctame para una cotización personalizada.</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#plans" data-section="plans" class="bg-brand-primary text-white py-3 px-6 rounded-full font-semibold transition-transform hover:scale-105 inline-block">
+                        Ver Planes
+                    </a>
+                    <a href="https://wa.me/18495142209" target="_blank" rel="noopener noreferrer" class="bg-brand-light text-brand-primary py-3 px-6 rounded-full font-semibold transition-transform hover:scale-105 inline-block">
+                        Contáctame
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Portafolio -->
+        <section id="portfolio" class="section-content section-hidden">
+            <h2 class="text-5xl font-bold text-center text-brand-primary mb-12">Mi Portafolio de Proyectos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Proyecto 1 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="logofull.jpg" alt="ChillGuy Burguers" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/050a30/f1f1f1?text=ChillGuy+Burguers';">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-brand-primary mb-2">ChillGuy Burguers</h3>
+                        <p class="text-gray-700 mb-4">Página web para una hamburguesería con un estilo moderno y juvenil.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4 space-y-1">
+                            <li>Menú interactivo con animaciones</li>
+                            <li>Diseño vibrante y atractivo</li>
+                            <li>Integración con redes sociales</li>
+                        </ul>
+                        <a href="https://diegoferrer1.github.io/chillguy/index.html#" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:underline font-semibold">Ver Sitio Web</a>
+                    </div>
+                </div>
+                <!-- Proyecto 2 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="logoclub.jpg" alt="El Club Español Cultural" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1c3f60/f1f1f1?text=Club+Español';">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-brand-primary mb-2">El Club Español Cultural</h3>
+                        <p class="text-gray-700 mb-4">Sitio web corporativo para un club social, con calendario de eventos, noticias y área de socios.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4 space-y-1">
+                            <li>Calendario de eventos</li>
+                            <li>Galería de instalaciones</li>
+                            <li>Portal de noticias para socios</li>
+                        </ul>
+                        <a href="https://www.clubespañol.com/" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:underline font-semibold">Ver Sitio Web</a>
+                    </div>
+                </div>
+                <!-- Proyecto 3 -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="laesquina.jpg" alt="La Esquina Gastrobar" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1c3f60/f1f1f1?text=La+Esquina+Gastrobar';">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-brand-primary mb-2">La Esquina Gastrobar</h3>
+                        <p class="text-gray-700 mb-4">Diseño dinámico para un bar, con eventos, promociones y galería de bebidas.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4 space-y-1">
+                            <li>Sección de eventos y happy hour</li>
+                            <li>Galería de bebidas y cócteles</li>
+                            <li>Integración con redes sociales</li>
+                        </ul>
+                        <a href="https://www.laesquinard.com/" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:underline font-semibold">Ver Sitio Web</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Planes y Precios -->
+        <section id="plans" class="section-content section-hidden">
+            <h2 class="text-5xl font-bold text-center text-brand-primary mb-12">Planes y Servicios</h2>
+            <p class="text-center text-xl text-gray-700 mb-10 max-w-3xl mx-auto">Elige el plan que mejor se adapte a las necesidades de tu proyecto. Todos los planes son un punto de partida y pueden personalizarse.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan Básico -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
+                    <div>
+                        <h3 class="text-3xl font-bold text-brand-primary mb-4">Plan Básico</h3>
+                        <p class="text-gray-600 mb-6">Ideal para una presencia en línea profesional, como un portafolio o una página de aterrizaje.</p>
+                        <div class="text-5xl font-extrabold text-brand-accent mb-6">
+                            RD$900<span class="text-xl text-gray-500">/mes</span>
+                        </div>
+                        <ul class="text-gray-700 space-y-3 mb-8">
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Diseño basado en plantilla</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Hasta 3 secciones</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Diseño adaptable (móvil y PC)</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Formulario de contacto</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Optimización SEO básica</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/18495142209?text=Hola,%20me%20gustaría%20más%20información%20sobre%20el%20Plan%20Básico%20de%20RD$900/mes." target="_blank" rel="noopener noreferrer" class="w-full text-center bg-gray-200 text-brand-primary py-3 px-6 rounded-full font-semibold transition-transform hover:scale-105">
+                        Solicitar
+                    </a>
+                </div>
+
+                <!-- Plan Estándar (Destacado) -->
+                <div class="bg-brand-primary text-white p-8 rounded-3xl shadow-lg flex flex-col justify-between transform scale-105 border-4 border-brand-accent">
+                    <div>
+                        <h3 class="text-3xl font-bold text-white mb-4">Plan Estándar</h3>
+                        <p class="opacity-90 mb-6">La solución perfecta para pequeñas empresas y profesionales que necesitan un sitio web completo.</p>
+                        <div class="text-5xl font-extrabold text-white mb-6">
+                            RD$1,500<span class="text-xl text-gray-300">/mes</span>
+                        </div>
+                        <ul class="text-white space-y-3 mb-8">
+                           <li class="flex items-center"><svg class="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><b>Todo lo del Plan Básico, y además:</b></li>
+                           <li class="flex items-center"><svg class="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Diseño personalizado</li>
+                           <li class="flex items-center"><svg class="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Hasta 7 páginas</li>
+                           <li class="flex items-center"><svg class="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Integración con CMS (WordPress/otro)</li>
+                           <li class="flex items-center"><svg class="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Blog o sección de noticias</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/18495142209?text=Hola,%20me%20gustaría%20más%20información%20sobre%20el%20Plan%20Estándar%20de%20RD$1,500/mes." target="_blank" rel="noopener noreferrer" class="w-full text-center bg-brand-accent text-white py-3 px-6 rounded-full font-semibold transition-transform hover:scale-105">
+                        Solicitar
+                    </a>
+                </div>
+
+                <!-- Plan Premium -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
+                    <div>
+                        <h3 class="text-3xl font-bold text-brand-primary mb-4">Plan Premium</h3>
+                        <p class="text-gray-600 mb-6">Para proyectos complejos que requieren funcionalidades avanzadas como e-commerce o sistemas a medida.</p>
+                        <div class="text-5xl font-extrabold text-brand-accent mb-6">
+                            RD$2,300<span class="text-xl text-gray-500">/mes</span>
+                        </div>
+                        <ul class="text-gray-700 space-y-3 mb-8">
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><b>Todo lo del Plan Estándar, y además:</b></li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Diseño a la medida (premium)</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte tecnico 24h</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Integraciones con APIs externas</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte y consultoría</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/18495142209?text=Hola,%20me%20gustaría%20más%20información%20sobre%20el%20Plan%20Premium%20de%20RD$2,300/mes." target="_blank" rel="noopener noreferrer" class="w-full text-center bg-gray-200 text-brand-primary py-3 px-6 rounded-full font-semibold transition-transform hover:scale-105">
+                        Solicitar
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Acerca de Nosotros -->
+        <section id="about" class="section-content section-hidden">
+            <h2 class="text-5xl font-bold text-center text-brand-primary mb-12">Sobre Mí</h2>
+            <div class="bg-white p-10 rounded-3xl shadow-lg max-w-4xl mx-auto">
+                 <div class="text-center">
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        ¡Hola! Soy <b>Diego Ferrer</b>, un desarrollador web enfocado en la creación de experiencias digitales de alto impacto. Mi pasión por la tecnología y el diseño me impulsa a construir sitios y aplicaciones que no solo son visualmente atractivas, sino también rápidas, intuitivas y funcionales.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        Con experiencia en una variedad de tecnologías, mi objetivo es entender a fondo las necesidades de cada cliente para ofrecer una solución a medida que aporte valor real y ayude a alcanzar metas concretas.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        Creo en la comunicación constante y en un proceso de desarrollo colaborativo para asegurar que el producto final no solo cumpla, sino que supere las expectativas.
+                    </p>
+                 </div>
+                <h3 class="text-3xl font-bold text-brand-primary text-center mt-10 mb-8">Mi Filosofía de Trabajo</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="flex items-start">
+                        <svg class="w-8 h-8 text-brand-accent mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <div>
+                            <h4 class="font-semibold text-xl text-brand-primary mb-1">Pasión por el Código</h4>
+                            <p class="text-gray-600">Disfruto cada línea de código y cada detalle del diseño, buscando siempre la excelencia técnica.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="w-8 h-8 text-brand-accent mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v18m-3-6h6m-6-4h6m6 4h2m-2 4h2M3 16h2M3 8h2m0 8V8"></path></svg>
+                        <div>
+                            <h4 class="font-semibold text-xl text-brand-primary mb-1">Innovación Constante</h4>
+                            <p class="text-gray-600">Me mantengo actualizado con las últimas tecnologías para ofrecer soluciones modernas y eficientes.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="w-8 h-8 text-brand-accent mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <div>
+                            <h4 class="font-semibold text-xl text-brand-primary mb-1">Calidad y Rendimiento</h4>
+                            <p class="text-gray-600">Me comprometo a entregar productos optimizados, seguros y de la más alta calidad.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="w-8 h-8 text-brand-accent mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-2c0-.653-.106-1.29-.313-1.884m0 0C17.444 14.9 18 13.96 18 13c0-1.657-3.582-3-8-3s-8 1.343-8 3c0 .96.556 1.9 1.313 2.616m0 0C4.106 18.71 4 19.347 4 20h4m-4 0v-2c0-.653.106-1.29.313-1.884m0 0C4.556 14.9 5 13.96 5 13c0-1.657-3.582-3-8-3s-8 1.343-8 3c0 .96.556 1.9 1.313 2.616"></path></svg>
+                        <div>
+                            <h4 class="font-semibold text-xl text-brand-primary mb-1">Colaboración con el Cliente</h4>
+                            <p class="text-gray-600">Construyo relaciones de confianza con mis clientes, basadas en la comunicación abierta y transparente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-brand-primary text-white py-8 mt-12 rounded-t-3xl">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Diego Ferrer. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-white hover:text-gray-300 transition-colors duration-300">Privacidad</a>
+                <a href="#" class="text-white hover:text-gray-300 transition-colors duration-300">Términos</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section-content');
+            const navLinks = document.querySelectorAll('.nav-button, #mobile-menu a, nav a, [data-section]');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Función para mostrar la sección y actualizar la navegación
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    if (section.id === sectionId) {
+                        // Usamos requestAnimationFrame para asegurar que la transición ocurra
+                        requestAnimationFrame(() => {
+                            section.style.display = 'block';
+                            requestAnimationFrame(() => {
+                                section.classList.remove('section-hidden');
+                                section.style.opacity = '1';
+                                section.style.transform = 'translateY(0)';
+                            });
+                        });
+                    } else {
+                        section.style.opacity = '0';
+                        section.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            section.style.display = 'none';
+                        }, 500); // Coincide con la duración de la transición
+                    }
+                });
+
+                // Actualizar el estado activo de los botones de navegación
+                document.querySelectorAll('[data-section]').forEach(link => {
+                    if (link.dataset.section === sectionId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // Cerrar menú móvil después de la selección
+                mobileMenu.classList.add('hidden');
+            }
+
+            // Manejar clics en los enlaces de navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const sectionId = link.dataset.section;
+                    if (sectionId) {
+                        event.preventDefault();
+                        showSection(sectionId);
+                        // Sincronizar la URL para una mejor experiencia de usuario
+                        history.pushState(null, '', `#${sectionId}`);
+                    }
+                });
+            });
+            
+            // Manejar el botón del menú móvil
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Mostrar la sección correcta al cargar la página (basado en el hash de la URL o por defecto 'home')
+            const initialSection = window.location.hash.substring(1) || 'home';
+            showSection(initialSection);
+        });
+    </script>
+</body>
+</html>
